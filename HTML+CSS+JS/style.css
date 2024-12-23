@@ -1,0 +1,13 @@
+* {
+  text-align: center;
+}
+.character {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 400px);
+}
+.imagechar {
+  object-fit: scale-down;
+  width: 300px;
+  height: 300px;
+}

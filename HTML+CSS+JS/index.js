@@ -16,12 +16,13 @@ async function getcharacter(url) {
     .then((body) => {
       const characterlist = document.getElementById("Characterslist");
       characterlist.innerHTML = body.data
+        .filter((i) => i.image !== null)
         .map(
           (i) => `
-      <div>
+      <div class="charactercontainer">
         <h1>${i.name}</h1>
         <br/>
-        <img src = "${i.image}" alt ="${i.image}"/>
+        <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
       </div>`
         )
         .join("");
