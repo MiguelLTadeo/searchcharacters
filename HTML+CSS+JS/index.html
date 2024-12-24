@@ -8,11 +8,16 @@
   </head>
   <body>
     <label class="headpage">
-      SEARCH AN ELDEN RING BOSS
+      <a class="title">SEARCH AN ELDEN RING BOSS</a>
       <br />
-      <input type="text" placeholder="enter the name" id="charactername" />
-      <button onclick="getcharacter(0)">SEARCH</button>
-      <button onclick="getcharacter(1)">ALL</button>
+      <input
+        type="text"
+        placeholder="enter the name"
+        id="charactername"
+        class="comandarea"
+      />
+      <button onclick="getcharacter(0)" class="comandarea">SEARCH</button>
+      <button onclick="getcharacter(1)" class="comandarea">ALL</button>
     </label>
     <div id="Characterslist" class="character"></div>
   </body>

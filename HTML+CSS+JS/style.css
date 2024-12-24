@@ -11,11 +11,29 @@ body {
 .headpage {
   font-size: 5rem;
 }
+.comandarea {
+  font-size: 1.5rem;
+  border-radius: 5%;
+}
 .imagechar {
   object-fit: cover;
   width: 300px;
   height: 300px;
   margin: 10px;
+}
+.descriptionchange {
+  color: transparent;
+}
+.boxcharacter:hover .descriptionchange {
+  color: black;
+}
+.boxcharacter:hover {
+  transform: scale(1.1);
+}
+.title {
+  background-color: darkgoldenrod;
+  border-radius: 20px;
+  border: 2px solid black;
 }
 .charactercontainer {
   margin: 10px;
@@ -24,9 +42,11 @@ body {
   align-items: center;
 }
 .boxcharacter {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   background-color: darkgoldenrod;
+  border-radius: 5%;
+  border: 2px solid black;
 }
 @media screen and (min-width: 767px) {
   .allcharacter {

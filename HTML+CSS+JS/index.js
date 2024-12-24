@@ -19,10 +19,12 @@ async function getcharacter(button) {
           .map(
             (i) => `
       <div class="charactercontainer">
-        <div class="boxcharacter">
+        <div class="boxcharacter" id="boxcharacter">
           <h1>${i.name}</h1>
           <br/>
           <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
+          <br/>
+          <h1 class = "descriptionchange">${i.description}</h1>
         </div>
       </div>`
           )
@@ -34,12 +36,15 @@ async function getcharacter(button) {
         allcharacter.innerHTML = body.data
           .filter((i) => i.image !== null)
           .map(
-            (i) => `
+            (i) =>
+              `
             <div class="charactercontainer">
-              <div class="boxcharacter">
-                <h1>${i.name}</h1>
+              <div class="boxcharacter" id="boxcharacter">
+                <h1 id = "charactername">${i.name}</h1>
                 <br/>
                 <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
+                <br/>
+                <h1 class = "descriptionchange">${i.description}</h1>
               </div>
             </div>`
           )
