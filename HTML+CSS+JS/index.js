@@ -19,9 +19,11 @@ async function getcharacter(button) {
           .map(
             (i) => `
       <div class="charactercontainer">
-        <h1>${i.name}</h1>
-        <br/>
-        <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
+        <div class="boxcharacter">
+          <h1>${i.name}</h1>
+          <br/>
+          <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
+        </div>
       </div>`
           )
           .join("");
@@ -33,11 +35,13 @@ async function getcharacter(button) {
           .filter((i) => i.image !== null)
           .map(
             (i) => `
-      <div class="charactercontainer">
-        <h1>${i.name}</h1>
-        <br/>
-        <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
-      </div>`
+            <div class="charactercontainer">
+              <div class="boxcharacter">
+                <h1>${i.name}</h1>
+                <br/>
+                <img src = "${i.image}" alt ="${i.image}" class="imagechar"/>
+              </div>
+            </div>`
           )
           .join("");
         characterlist.appendChild(allcharacter);
