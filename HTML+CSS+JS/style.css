@@ -26,6 +26,7 @@ body {
 }
 .boxcharacter:hover .descriptionchange {
   color: black;
+  font-size: 1.5rem;
 }
 .boxcharacter:hover {
   transform: scale(1.1);
