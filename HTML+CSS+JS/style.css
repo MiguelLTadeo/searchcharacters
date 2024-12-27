@@ -74,6 +74,48 @@ body {
   }
 }
 @media screen and (max-width: 600px) {
+  .headpage {
+    font-size: 2rem;
+  }
+  .comandarea {
+    font-size: 0.5rem;
+    border-radius: 5%;
+  }
+  .imagechar {
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+  }
+  .descriptionchange {
+    color: transparent;
+  }
+  .boxcharacter:hover .descriptionchange {
+    color: black;
+    font-size: 0.5rem;
+  }
+  .boxcharacter:hover {
+    transform: scale(1.1);
+  }
+  .title {
+    background-color: darkgoldenrod;
+    border-radius: 20px;
+    border: 2px solid black;
+  }
+  .charactercontainer {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .boxcharacter {
+    width: 300px;
+    height: 300px;
+    background-color: darkgoldenrod;
+    border-radius: 5%;
+    border: 2px solid black;
+    font-size: 0.5rem;
+  }
   .allcharacter {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
