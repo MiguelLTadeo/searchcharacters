@@ -17,8 +17,8 @@ body {
 }
 .imagechar {
   object-fit: cover;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   margin: 10px;
 }
 .descriptionchange {
@@ -26,7 +26,7 @@ body {
 }
 .boxcharacter:hover .descriptionchange {
   color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .boxcharacter:hover {
   transform: scale(1.1);
@@ -43,8 +43,8 @@ body {
   align-items: center;
 }
 .boxcharacter {
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   background-color: darkgoldenrod;
   border-radius: 5%;
   border: 2px solid black;
