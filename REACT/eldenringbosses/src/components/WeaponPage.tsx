@@ -1,33 +1,33 @@
 "use client";
-import { Armor } from "@/interfaces/Armors";
+import { Weapon } from "@/interfaces/Weapons";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function ArmorPage() {
+export default function WeaponPage() {
   const searchParams = useSearchParams();
-  const [armor, setArmor] = useState<Armor>();
+  const [weapon, setWeapon] = useState<Weapon>();
 
-  async function GetArmor() {
+  async function GetWeapon() {
     try {
       const Id = searchParams.get("item");
       if (!Id) {
         return console.log("Sem id para pesquisa!");
       }
       const response = await fetch(
-        `https://eldenring.fanapis.com/api/armors/${Id}`
+        `https://eldenring.fanapis.com/api/weapons/${Id}`
       );
       if (!response.ok) {
         return console.log("Erro ao buscar armadura!");
       }
-      const bosses = await response.json();
-      setArmor(bosses.data);
+      const wea = await response.json();
+      setWeapon(wea.data);
     } catch (error) {
       throw new Error("Erro no servidor!");
     }
   }
   useEffect(() => {
-    GetArmor();
+    GetWeapon();
   }, [searchParams]);
 
   return (
@@ -47,26 +47,26 @@ export default function ArmorPage() {
           </h1>
         </div>
       </header>
-      {armor ? (
+      {weapon ? (
         <>
           <div className="flex flex-col items-center">
             <div className="flex justify-center items-center">
               <div className="flex flex-col items-center text-center m-0">
                 <Image
-                  src={armor.image}
+                  src={weapon.image}
                   alt="elden ring image"
                   width={200}
                   height={200}
                 />
-                <h1 className="text-3xl">{armor.name}</h1>
+                <h1 className="text-3xl">{weapon.name}</h1>
               </div>
               <div className="grid grid-cols-1 m-5">
                 <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
-                  CATEGORY {armor.category}
+                  CATEGORY {weapon.category}
                 </h1>
 
                 <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
-                  WEIGHT {armor.weight}
+                  WEIGHT {weapon.weight}
                 </h1>
               </div>
             </div>
@@ -76,20 +76,16 @@ export default function ArmorPage() {
                 <h1 className="text-3xl">
                   DESCRIPTION
                   <br />
-                  {armor.description}
+                  {weapon.description}
                 </h1>
               </div>
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">Damage Negation</h1>
-                ) : (
-                  <></>
-                )}
-                {armor?.dmgNegation ? (
-                  armor.dmgNegation.map((dmg) => (
-                    <div key={dmg.name}>
+                {weapon?.attack ? <h1 className="text-3xl">ATTACK</h1> : <></>}
+                {weapon?.attack ? (
+                  weapon.attack.map((infos, i) => (
+                    <div key={i}>
                       <h1 className="text-3xl">
-                        {dmg.name}:{dmg.amount}
+                        {infos.name}:{infos.amount}
                       </h1>
                     </div>
                   ))
@@ -98,16 +94,52 @@ export default function ArmorPage() {
                 )}
               </div>
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">Resistance</h1>
+                {weapon?.defence ? (
+                  <h1 className="text-3xl">DEFENSE</h1>
                 ) : (
                   <></>
                 )}
-                {armor?.resistance ? (
-                  armor.resistance.map((res) => (
-                    <div key={res.name}>
+                {weapon?.defence ? (
+                  weapon.defence.map((infos, i) => (
+                    <div key={i}>
                       <h1 className="text-3xl">
-                        {res.name}:{res.amount}
+                        {infos.name}:{infos.amount}
+                      </h1>
+                    </div>
+                  ))
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                {weapon?.requiredAttributes ? (
+                  <h1 className="text-3xl">REQUIRED ATTRIBUTES</h1>
+                ) : (
+                  <></>
+                )}
+                {weapon?.requiredAttributes ? (
+                  weapon.requiredAttributes.map((infos, i) => (
+                    <div key={i}>
+                      <h1 className="text-3xl">
+                        {infos.name}:{infos.amount}
+                      </h1>
+                    </div>
+                  ))
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                {weapon?.scalesWith ? (
+                  <h1 className="text-3xl">SCALES WITH</h1>
+                ) : (
+                  <></>
+                )}
+                {weapon?.scalesWith ? (
+                  weapon.scalesWith.map((infos, i) => (
+                    <div key={i}>
+                      <h1 className="text-3xl">
+                        {infos.name}:{infos.scaling}
                       </h1>
                     </div>
                   ))

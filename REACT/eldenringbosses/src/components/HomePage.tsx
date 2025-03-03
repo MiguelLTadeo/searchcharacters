@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Boss } from "@/interfaces/Bosses";
 import { Armor } from "@/interfaces/Armors";
 import { Weapon } from "@/interfaces/Weapons";
-import { Classe } from "@/interfaces/Classes";
+import { Talisman } from "@/interfaces/Talisman";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
@@ -12,7 +12,7 @@ export default function HomePage() {
     bosses: Boss[];
     armors: Armor[];
     weapons: Weapon[];
-    classes: Classe[];
+    talismans: Talisman[];
   }
 
   const router = useRouter();
@@ -22,34 +22,60 @@ export default function HomePage() {
 
   async function GetData(name: string) {
     try {
-      const [bossesResponse, armorsResponse, weaponsResponse, classesResponse] =
-        await Promise.all([
+      let page = 0;
+      let weaponcounter = 0;
+      let BossesArray: Boss[] = [];
+      let ArmorsArray: Armor[] = [];
+      let WeaponsArray: Weapon[] = [];
+      let TalismansArray: Talisman[] = [];
+
+      while (true) {
+        const [
+          bossesResponse,
+          armorsResponse,
+          weaponsResponse,
+          talismansResponse,
+        ] = await Promise.all([
           fetch(
-            `https://eldenring.fanapis.com/api/bosses?name=${name}&limit=100`
+            `https://eldenring.fanapis.com/api/bosses?name=${name}&limit=100&page=${page}`
           ),
           fetch(
-            `https://eldenring.fanapis.com/api/armors?name=${name}&limit=100`
+            `https://eldenring.fanapis.com/api/armors?name=${name}&limit=100&page=${page}`
           ),
           fetch(
-            `https://eldenring.fanapis.com/api/weapons?name=${name}&limit=100`
+            `https://eldenring.fanapis.com/api/weapons?name=${name}&limit=100&page=${page}`
           ),
           fetch(
-            `https://eldenring.fanapis.com/api/classes?name=${name}&limit=100`
+            `https://eldenring.fanapis.com/api/talismans?name=${name}&limit=100&page=${page}`
           ),
         ]);
 
-      const bosses = await bossesResponse.json();
-      const armors = await armorsResponse.json();
-      const weapons = await weaponsResponse.json();
-      const classes = await classesResponse.json();
+        const bosses = await bossesResponse.json();
+        const armors = await armorsResponse.json();
+        const weapons = await weaponsResponse.json();
+        const talismans = await talismansResponse.json();
+
+        if (
+          bosses.data.length === 0 &&
+          armors.data.length === 0 &&
+          weapons.data.length === 0 &&
+          talismans.data.length === 0
+        ) {
+          break;
+        }
+
+        BossesArray = [...BossesArray, ...bosses.data];
+        ArmorsArray = [...ArmorsArray, ...armors.data];
+        WeaponsArray = [...WeaponsArray, ...weapons.data];
+        TalismansArray = [...TalismansArray, ...talismans.data];
+        page++;
+      }
 
       setFetchdata({
-        bosses: bosses.success && bosses.data.length > 0 ? bosses.data : null,
-        armors: armors.success && armors.data.length > 0 ? armors.data : null,
-        weapons:
-          weapons.success && weapons.data.length > 0 ? weapons.data : null,
-        classes:
-          classes.success && classes.data.length > 0 ? classes.data : null,
+        bosses: BossesArray,
+        armors: ArmorsArray,
+        weapons: WeaponsArray,
+        talismans: TalismansArray,
       });
     } catch (error) {
       throw new Error("Erro no servidor!");
@@ -62,7 +88,7 @@ export default function HomePage() {
     }
     return (
       <>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols- lg:grid-cols-4">
           {fetchdata[type]
             .filter((item) => item.image != null)
             .map((item) => (
@@ -77,7 +103,7 @@ export default function HomePage() {
                     router.push(`/${type}?item=${encodeURIComponent(item.id)}`);
                   }}
                 >
-                  <h1 className="text-x w-64 h-10 font-black p-5 m-10 bg-black rounded overflow-hidden">
+                  <h1 className="text-x w-64 h-10 font-black p-5 m-5 bg-black rounded overflow-hidden">
                     {item.name.toUpperCase()}
                   </h1>
                   <Image
@@ -85,7 +111,7 @@ export default function HomePage() {
                     alt="elden ring image"
                     width={200}
                     height={200}
-                    className="w-[200px] h-[200px] m-5 rounded-full"
+                    className="w-[200px] h-[200px] m-2 rounded-full"
                   />
                 </button>
               </div>
@@ -96,10 +122,6 @@ export default function HomePage() {
   }
   useEffect(() => {
     GetData("");
-    PrintData("bosses");
-    PrintData("armors");
-    PrintData("weapons");
-    PrintData("classes");
   }, []);
 
   return (
@@ -114,7 +136,7 @@ export default function HomePage() {
               height={100}
             />
           </div>
-          <h1 className="hidden sm:block md:block sm:bg-black p-3 rounded text-5xl absolute left-1/2 transform -translate-x-1/2">
+          <h1 className="hidden lg:block bg-black p-3 rounded text-5xl absolute left-1/2 transform -translate-x-1/2">
             ELDEN WIKI
           </h1>
           <div className="m-2 flex items-center">
@@ -176,10 +198,10 @@ export default function HomePage() {
         )}
       </div>
       <div>
-        {fetchdata?.classes ? (
+        {fetchdata?.talismans ? (
           <>
-            <h1 className="text-center m-5 text-5xl font-black">Classes</h1>
-            {PrintData("classes")}
+            <h1 className="text-center m-5 text-5xl font-black">TALISMANS</h1>
+            {PrintData("talismans")}
           </>
         ) : (
           <></>
