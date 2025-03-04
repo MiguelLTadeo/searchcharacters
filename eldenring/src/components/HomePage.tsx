@@ -171,46 +171,54 @@ export default function HomePage() {
           </div>
         </div>
       </header>
-      <div>
-        {fetchdata?.bosses.length != 0 ? (
-          <>
-            <h1 className="text-center m-5 text-5xl font-black">BOSSES</h1>
-            {PrintData("bosses")}
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div>
-        {fetchdata?.armors.length != 0 ? (
-          <>
-            <h1 className="text-center m-5 text-5xl font-black">ARMORS</h1>
-            {PrintData("armors")}
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div>
-        {fetchdata?.weapons.length != 0 ? (
-          <>
-            <h1 className="text-center m-5 text-5xl font-black">WEAPONS</h1>
-            {PrintData("weapons")}
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div>
-        {fetchdata?.talismans.length != 0 ? (
-          <>
-            <h1 className="text-center m-5 text-5xl font-black">TALISMANS</h1>
-            {PrintData("talismans")}
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
+      {fetchdata ? (
+        <>
+          <div>
+            {fetchdata?.bosses.length != 0 ? (
+              <>
+                <h1 className="text-center m-5 text-5xl font-black">BOSSES</h1>
+                {PrintData("bosses")}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div>
+            {fetchdata?.armors.length != 0 ? (
+              <>
+                <h1 className="text-center m-5 text-5xl font-black">ARMORS</h1>
+                {PrintData("armors")}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div>
+            {fetchdata?.weapons.length != 0 ? (
+              <>
+                <h1 className="text-center m-5 text-5xl font-black">WEAPONS</h1>
+                {PrintData("weapons")}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div>
+            {fetchdata?.talismans.length != 0 ? (
+              <>
+                <h1 className="text-center m-5 text-5xl font-black">
+                  TALISMANS
+                </h1>
+                {PrintData("talismans")}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
