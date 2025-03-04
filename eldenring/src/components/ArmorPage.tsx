@@ -60,60 +60,70 @@ export default function ArmorPage() {
                 />
                 <h1 className="text-3xl">{armor.name}</h1>
               </div>
-              <div className="grid grid-cols-1 m-5">
-                <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
-                  CATEGORY {armor.category}
+              <div className="grid grid-cols-1 m-5 bg-elden-gold rounded">
+                <h1 className="flex-1 min-w[250px] text-center bg-black m-2 rounded p-4 text-xl md:text-3xl">
+                  CATEGORY {armor.category.toUpperCase()}
                 </h1>
 
-                <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
+                <h1 className="flex-1 min-w[250px] text-center bg-black m-2 rounded p-4 text-xl md:text-3xl">
                   WEIGHT {armor.weight}
                 </h1>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-5">
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                <h1 className="text-3xl">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                <h1 className="text-3xl bg-black m-2 p-3 rounded">
                   DESCRIPTION
                   <br />
+                </h1>
+                <h1 className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
                   {armor.description}
                 </h1>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">DAMAGE NEGATION</h1>
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">
+                    DAMAGE NEGATION
+                  </h1>
                 ) : (
                   <></>
                 )}
-                {armor?.dmgNegation ? (
-                  armor.dmgNegation.map((dmg) => (
-                    <div key={dmg.name}>
-                      <h1 className="text-3xl">
-                        {dmg.name}:{dmg.amount}
-                      </h1>
-                    </div>
-                  ))
-                ) : (
-                  <></>
-                )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {armor?.dmgNegation ? (
+                    armor.dmgNegation.map((dmg) => (
+                      <div key={dmg.name}>
+                        <h1 className="text-3xl m-2">
+                          {dmg.name}:{dmg.amount}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">RESISTANCE</h1>
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">
+                    RESISTANCE
+                  </h1>
                 ) : (
                   <></>
                 )}
-                {armor?.resistance ? (
-                  armor.resistance.map((res) => (
-                    <div key={res.name}>
-                      <h1 className="text-3xl">
-                        {res.name}:{res.amount}
-                      </h1>
-                    </div>
-                  ))
-                ) : (
-                  <></>
-                )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {armor?.resistance ? (
+                    armor.resistance.map((res) => (
+                      <div key={res.name}>
+                        <h1 className="text-3xl m-2">
+                          {res.name}:{res.amount}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
             </div>
           </div>

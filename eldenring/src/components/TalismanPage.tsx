@@ -58,20 +58,26 @@ export default function TalismanPage() {
                 height={300}
                 className="m-5"
               />
-              <h1 className="text-3xl text-black">{talisman.name}</h1>
+              <h1 className="text-3xl p-3 bg-black rounded m-2">
+                {talisman.name}
+              </h1>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 m-5">
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                <h1 className="text-3xl m-5 text-black">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                <h1 className="text-3xl m-2 p-3 bg-black rounded">
                   TALISMAN DESCRIPTION <br />
+                </h1>
+                <h1 className="flex-1 text-3xl m-2 p-3 bg-white text-black rounded">
                   {talisman.description}
                 </h1>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                <h1 className="text-3xl m-5 text-black">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                <h1 className="text-3xl m-2 p-3 bg-black rounded">
                   EFFECT
                   <br />
+                </h1>
+                <h1 className="flex-1 text-3xl m-2 p-3 bg-white text-black rounded">
                   {talisman.effect}
                 </h1>
               </div>

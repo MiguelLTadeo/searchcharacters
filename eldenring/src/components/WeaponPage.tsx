@@ -60,92 +60,110 @@ export default function WeaponPage() {
                 />
                 <h1 className="text-3xl">{weapon.name}</h1>
               </div>
-              <div className="grid grid-cols-1 m-5">
-                <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
-                  CATEGORY {weapon.category}
+              <div className="grid grid-cols-1 m-5 bg-elden-gold rounded">
+                <h1 className="flex-1 min-w[250px] text-center bg-black m-5 rounded p-4 text-xl md:text-3xl">
+                  CATEGORY {weapon.category.toUpperCase()}
                 </h1>
 
-                <h1 className="flex-1 min-w[250px] text-center bg-elden-gold m-5 rounded p-4 text-xl md:text-3xl">
+                <h1 className="flex-1 min-w[250px] text-center bg-black m-5 rounded p-4 text-xl md:text-3xl">
                   WEIGHT {weapon.weight}
                 </h1>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-5">
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                <h1 className="text-3xl">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+                <h1 className="text-3xl bg-black m-2 p-3 rounded">
                   DESCRIPTION
                   <br />
+                </h1>
+                <h1 className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
                   {weapon.description}
                 </h1>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
-                {weapon?.attack ? <h1 className="text-3xl">ATTACK</h1> : <></>}
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {weapon?.attack ? (
-                  weapon.attack.map((infos, i) => (
-                    <div key={i}>
-                      <h1 className="text-3xl">
-                        {infos.name}:{infos.amount}
-                      </h1>
-                    </div>
-                  ))
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">ATTACK</h1>
                 ) : (
                   <></>
                 )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {weapon?.attack ? (
+                    weapon.attack.map((infos, i) => (
+                      <div key={i}>
+                        <h1 className="text-3xl m-2">
+                          {infos.name}:{infos.amount}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {weapon?.defence ? (
-                  <h1 className="text-3xl">DEFENSE</h1>
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">DEFENSE</h1>
                 ) : (
                   <></>
                 )}
-                {weapon?.defence ? (
-                  weapon.defence.map((infos, i) => (
-                    <div key={i}>
-                      <h1 className="text-3xl">
-                        {infos.name}:{infos.amount}
-                      </h1>
-                    </div>
-                  ))
-                ) : (
-                  <></>
-                )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {weapon?.defence ? (
+                    weapon.defence.map((infos, i) => (
+                      <div key={i}>
+                        <h1 className="text-3xl m-2">
+                          {infos.name}:{infos.amount}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {weapon?.requiredAttributes ? (
-                  <h1 className="text-3xl">REQUIRED ATTRIBUTES</h1>
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">
+                    REQUIRED ATTRIBUTES
+                  </h1>
                 ) : (
                   <></>
                 )}
-                {weapon?.requiredAttributes ? (
-                  weapon.requiredAttributes.map((infos, i) => (
-                    <div key={i}>
-                      <h1 className="text-3xl">
-                        {infos.name}:{infos.amount}
-                      </h1>
-                    </div>
-                  ))
-                ) : (
-                  <></>
-                )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {weapon?.requiredAttributes ? (
+                    weapon.requiredAttributes.map((infos, i) => (
+                      <div key={i}>
+                        <h1 className="text-3xl m-2">
+                          {infos.name}:{infos.amount}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
-              <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
+              <div className="flex flex-col flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {weapon?.scalesWith ? (
-                  <h1 className="text-3xl">SCALES WITH</h1>
+                  <h1 className="text-3xl bg-black m-2 p-3 rounded">
+                    SCALES WITH
+                  </h1>
                 ) : (
                   <></>
                 )}
-                {weapon?.scalesWith ? (
-                  weapon.scalesWith.map((infos, i) => (
-                    <div key={i}>
-                      <h1 className="text-3xl">
-                        {infos.name}:{infos.scaling}
-                      </h1>
-                    </div>
-                  ))
-                ) : (
-                  <></>
-                )}
+                <div className="flex-1 text-3xl bg-white text-black m-2 p-3 rounded">
+                  {weapon?.scalesWith ? (
+                    weapon.scalesWith.map((infos, i) => (
+                      <div key={i}>
+                        <h1 className="text-3xl m-2">
+                          {infos.name}:{infos.scaling}
+                        </h1>
+                      </div>
+                    ))
+                  ) : (
+                    <></>
+                  )}
+                </div>
               </div>
             </div>
           </div>
