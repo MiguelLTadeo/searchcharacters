@@ -88,7 +88,7 @@ export default function HomePage() {
 
   function PrintData(type: keyof GameData) {
     if (!fetchdata || !fetchdata[type]) {
-      return <h1>none</h1>;
+      return <></>;
     }
     return (
       <>
@@ -172,7 +172,7 @@ export default function HomePage() {
         </div>
       </header>
       <div>
-        {fetchdata?.bosses ? (
+        {fetchdata?.bosses.length != 0 ? (
           <>
             <h1 className="text-center m-5 text-5xl font-black">BOSSES</h1>
             {PrintData("bosses")}
@@ -182,7 +182,7 @@ export default function HomePage() {
         )}
       </div>
       <div>
-        {fetchdata?.armors ? (
+        {fetchdata?.armors.length != 0 ? (
           <>
             <h1 className="text-center m-5 text-5xl font-black">ARMORS</h1>
             {PrintData("armors")}
@@ -192,7 +192,7 @@ export default function HomePage() {
         )}
       </div>
       <div>
-        {fetchdata?.weapons ? (
+        {fetchdata?.weapons.length != 0 ? (
           <>
             <h1 className="text-center m-5 text-5xl font-black">WEAPONS</h1>
             {PrintData("weapons")}
@@ -202,7 +202,7 @@ export default function HomePage() {
         )}
       </div>
       <div>
-        {fetchdata?.talismans ? (
+        {fetchdata?.talismans.length != 0 ? (
           <>
             <h1 className="text-center m-5 text-5xl font-black">TALISMANS</h1>
             {PrintData("talismans")}
