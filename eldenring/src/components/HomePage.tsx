@@ -8,11 +8,16 @@ import { Talisman } from "@/interfaces/Talisman";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+  interface ImgeName {
+    id: string;
+    name: string;
+    image: string;
+  }
   interface GameData {
-    bosses: Boss[];
-    armors: Armor[];
-    weapons: Weapon[];
-    talismans: Talisman[];
+    bosses: ImgeName[];
+    armors: ImgeName[];
+    weapons: ImgeName[];
+    talismans: ImgeName[];
   }
 
   const router = useRouter();
@@ -23,11 +28,10 @@ export default function HomePage() {
   async function GetData(name: string) {
     try {
       let page = 0;
-      let weaponcounter = 0;
-      let BossesArray: Boss[] = [];
-      let ArmorsArray: Armor[] = [];
-      let WeaponsArray: Weapon[] = [];
-      let TalismansArray: Talisman[] = [];
+      let BossesArray: ImgeName[] = [];
+      let ArmorsArray: ImgeName[] = [];
+      let WeaponsArray: ImgeName[] = [];
+      let TalismansArray: ImgeName[] = [];
 
       while (true) {
         const [

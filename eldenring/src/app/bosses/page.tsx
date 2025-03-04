@@ -1,9 +1,13 @@
+"use client";
 import BossPage from "@/components/BossPage";
+import { Suspense } from "react";
 
 export default function () {
   return (
     <>
-      <BossPage />
+      <Suspense fallback={<div>Carregando...</div>}>
+        <BossPage />
+      </Suspense>
     </>
   );
 }

@@ -1,9 +1,13 @@
+"use client";
 import TalismanPage from "@/components/TalismanPage";
+import { Suspense } from "react";
 
 export default function () {
   return (
     <>
-      <TalismanPage />
+      <Suspense fallback={<div>Carregando...</div>}>
+        <TalismanPage />
+      </Suspense>
     </>
   );
 }

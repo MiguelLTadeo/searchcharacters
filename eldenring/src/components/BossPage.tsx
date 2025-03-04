@@ -71,6 +71,7 @@ export default function BossPage() {
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 <h1 className="text-3xl m-5 text-black">
                   Location
+                  <br />
                   {boss.location}
                 </h1>
               </div>
