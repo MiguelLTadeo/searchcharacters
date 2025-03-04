@@ -81,7 +81,7 @@ export default function ArmorPage() {
               </div>
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">Damage Negation</h1>
+                  <h1 className="text-3xl">DAMAGE NEGATION</h1>
                 ) : (
                   <></>
                 )}
@@ -99,7 +99,7 @@ export default function ArmorPage() {
               </div>
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 {armor?.dmgNegation ? (
-                  <h1 className="text-3xl">Resistance</h1>
+                  <h1 className="text-3xl">RESISTANCE</h1>
                 ) : (
                   <></>
                 )}

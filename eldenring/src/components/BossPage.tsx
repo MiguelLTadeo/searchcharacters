@@ -64,13 +64,13 @@ export default function BossPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 m-5">
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 <h1 className="text-3xl m-5 text-black">
-                  Boss Description <br />
+                  BOSS DESCRIPTION <br />
                   {boss.description}
                 </h1>
               </div>
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded">
                 <h1 className="text-3xl m-5 text-black">
-                  Location
+                  LOCATION
                   <br />
                   {boss.location}
                 </h1>
@@ -78,7 +78,7 @@ export default function BossPage() {
 
               <div className="flex-1 min-w-[250px] text-center bg-elden-gold m-5 rounded text-black">
                 <div className="m-5">
-                  {boss?.drops ? <h1 className="text-3xl">Drops</h1> : <></>}
+                  {boss?.drops ? <h1 className="text-3xl">DROPS</h1> : <></>}
                   {boss?.drops ? (
                     boss.drops.map((drop, i) => (
                       <div key={i}>
