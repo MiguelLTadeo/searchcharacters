@@ -36,7 +36,7 @@ export default function TalismanPage() {
         <div className="flex justify-between items-center ">
           <div className="flex flex-col items-center m-2">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="elden ring image"
               width={100}
               height={100}
