@@ -134,7 +134,7 @@ export default function HomePage() {
         <div className="flex justify-between items-center ">
           <div className="flex flex-col items-center rounded m-2">
             <Image
-              src="/favicon.ico"
+              src="/logo.svg"
               alt="elden ring image"
               width={100}
               height={100}
