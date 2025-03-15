@@ -111,7 +111,7 @@ export default function HomePage() {
                     {item.name.toUpperCase()}
                   </h1>
                   <Image
-                    src={item.image}
+                    src={`https://eldenring.fanapis.com/images/${type}/${item.id}.png`}
                     alt="elden ring image"
                     width={200}
                     height={200}
